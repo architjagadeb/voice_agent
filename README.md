@@ -23,9 +23,9 @@ This project sets the foundation for building intelligent voice-driven applicati
 ## 📁 Project Structure
 
 voice_agent_day1/
-├── app.py # Flask backend server
-├── index.html # Frontend HTML with custom styling and JS integration
-└── script.js # JavaScript file for client-side interaction
+- app.py # Flask backend server
+-  index.html # Frontend HTML with custom styling and JS integration
+- script.js # JavaScript file for client-side interaction
 
 🧠 Learning Reflection
 This day marked my introduction to backend development using Python and Flask. As someone new to backend, setting up a working Flask server and serving frontend files felt like a huge step forward. I now understand how a backend can serve static content and interact with the frontend — an essential skill for building voice-based applications in the coming days.
