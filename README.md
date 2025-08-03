@@ -82,5 +82,5 @@ This project is licensed under the [MIT License](./LICENSE)
 ## 📅 Stay Tuned
 
 I’ll be updating this repo **daily** as I progress through each challenge.  
-Follow my journey on [LinkedIn](https://www.linkedin.com/in/your-link) and feel free to ⭐ star the repo for updates!
+Follow my journey on [LinkedIn](www.linkedin.com/in/archit-jagadeb-a6aa66366) and feel free to ⭐ star the repo for updates!
 
