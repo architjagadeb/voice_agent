@@ -1,47 +1,86 @@
-# Day 1 - 30 Days of AI Voice Agents Challenge 🚀
+# 30 Days of AI Voice Agents Challenge 🚀
 
-Welcome to Day 1 of the **30 Days of AI Voice Agents Challenge by Murf AI**!  
-This project sets the foundation for building intelligent voice-driven applications by establishing a working backend and frontend setup.
+Welcome to my journey through the **30 Days of AI Voice Agents Challenge by Murf AI**!  
+This project explores the development of intelligent voice-driven applications — from backend setup to real-time voice generation — using Python, Flask, and the Murf TTS SDK.
 
+> 🛠 This repository is a living project and will be updated regularly as each day's challenge is completed.
 
+---
 
-## 📌 Task Overview
+## 📌 Challenge Overview
 
-**Day 1 Goal:**  
-> Set up a Python backend using Flask and serve a basic HTML + JavaScript frontend from it.
+This challenge is hosted by **Murf AI** in collaboration with **Voice of Learning** and spans 30 days of hands-on voice tech exploration.  
+Each task involves building a specific feature or integration for an AI-powered voice agent using Murf’s tools.
 
+---
 
-## ✅ What I Built
+## ✅ Completed Tasks
 
-- ✅ Initialized a minimal Flask backend (`app.py`)
-- ✅ Served a styled `index.html` page directly from the backend
-- ✅ Linked a `script.js` file to demonstrate frontend interaction via JavaScript
-- ✅ Tested the full integration (backend → frontend → browser interaction)
+### 🎯 Task 1 – Flask Backend + Frontend Setup
+- ✅ Initialized a minimal Flask server (`app.py`)
+- ✅ Served `index.html` from the backend
+- ✅ Connected a `script.js` file for frontend interaction
+- ✅ Verified everything renders and runs correctly in browser
+
+### 🎯 Task 2 – Text-to-Speech Integration (Murf SDK)
+- ✅ Created a REST `/tts` endpoint using Flask
+- ✅ Integrated Murf’s Python SDK and `text_to_speech.generate()` method
+- ✅ Secured API key using `.env` file
+- ✅ Tested the API using Postman
+- ✅ Built a basic HTML audio player to preview generated voice output
+- ✅ Organized project assets for Day 1 and Day 2 into structured folders
+
+---
+
+## 🧠 Reflections
+
+Each task builds on the last — and these early days gave me hands-on exposure to:
+- Backend fundamentals with Flask
+- Serving static files and connecting frontend/backend
+- Using Murf's Python SDK to generate realistic audio
+- Sending and testing HTTP requests via Postman
+- Designing clean UI to display outputs interactively
 
 ---
 
 ## 📁 Project Structure
 
-voice_agent_day1/
-- app.py # Flask backend server
--  index.html # Frontend HTML with custom styling and JS integration
-- script.js # JavaScript file for client-side interaction
+voice_agent/
+├── app.py # Flask backend
+├── .env # API key (not tracked in Git)
+├── requirements.txt # Project dependencies
+├── index.html # UI for homepage
+├── style.css # Styling for frontend
 
-🧠 Learning Reflection
-This day marked my introduction to backend development using Python and Flask. As someone new to backend, setting up a working Flask server and serving frontend files felt like a huge step forward. I now understand how a backend can serve static content and interact with the frontend — an essential skill for building voice-based applications in the coming days.
+---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
+
 - Python 3
 - Flask
-- HTML5
+- Murf Python SDK
+- HTML5 + CSS3
 - JavaScript (vanilla)
+- Postman (for API testing)
 
-🙌 Credits
-- Challenge hosted by Murf AI
-- Supported by Voice of Learning
-- Built with 💻 by Archit Jagadeb
-
-📜 License
-This project is licensed under the MIT License
 ---
-Let me know if you want the **LICENSE file**, or want this auto-uploaded to GitHub via a zip or Gist.
+
+## 🙌 Credits
+
+- Challenge organized by [Murf AI](https://murf.ai)
+- Community support by [Voice of Learning](https://voiceoflearning.in/)
+- Built with 💻 by **Archit Jagadeb**
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](./LICENSE)
+
+---
+
+## 📅 Stay Tuned
+
+I’ll be updating this repo **daily** as I progress through each challenge.  
+Follow my journey on [LinkedIn](www.linkedin.com/in/archit-jagadeb-a6aa66366) and feel free to ⭐ star the repo for updates!
+
