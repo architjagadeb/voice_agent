@@ -30,6 +30,13 @@ Each task involves building a specific feature or integration for an AI-powered 
 - ✅ Built a basic HTML audio player to preview generated voice output
 - ✅ Organized project assets for Day 1 and Day 2 into structured folders
 
+### 🎯 Day 3 – Frontend Audio Playback + Voice Selection
+- Built a modern frontend UI to input text and trigger TTS
+- Played generated voice via HTML `<audio>` element
+- Added a dropdown to select between male and female voices (`Ken` and `Natalie`)
+- Updated JavaScript to pass `voice_id` and optional `style` to the backend
+- Improved UX with loading states and success notifications
+
 ---
 
 ## 🧠 Reflections
