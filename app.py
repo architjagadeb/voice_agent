@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from murf import Murf
 import os
 from dotenv import load_dotenv
@@ -6,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, static_url_path='', static_folder='.')
+CORS(app)
 
 # Initialize Murf client
 client = Murf(api_key=os.getenv("MURF_API_KEY"))

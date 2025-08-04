@@ -3,13 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Voice Agent Challenge - Day 1</title>
+  <title>Voice Agent Challenge - Day 3</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>🚀 Voice Agent Challenge</h1>
-  <p>Backend is ready with Flask, and this page is served through Python. More voice magic coming soon!</p>
-  <button onclick="sayHello()">Click to say Hello (via JS)</button>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">🎙️</div>
+        <h1>Voice Agent</h1>
+      </div>
+      <p class="subtitle">Transform your text into natural speech with AI</p>
+    </div>
+
+    <div class="main-content">
+      <div class="input-section">
+        <label for="text-input" class="input-label">Enter your text</label>
+        <textarea 
+          id="text-input" 
+          class="text-input" 
+          placeholder="Type or paste your text here..."
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="voice-section">
+        <label for="voice-select" class="voice-label">Choose Voice</label>
+        <div class="select-wrapper">
+          <select id="voice-select" class="voice-select">
+            <option value="en-US-natalie" data-style="">Female (Natalie)</option>
+            <option value="en-US-ken" data-style="Conversational">Male (Ken)</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="generate-btn" class="generate-btn">
+          <span class="btn-icon">🎵</span>
+          <span class="btn-text">Generate & Play</span>
+        </button>
+      </div>
+
+      <div class="audio-section" id="audio-section" style="display: none;">
+        <div class="audio-container">
+          <div class="audio-header">
+            <span class="audio-icon">🔊</span>
+            <span class="audio-label">Generated Audio</span>
+          </div>
+          <audio id="audio-player" controls class="audio-player">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Powered by Murf AI Voice Technology</p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
