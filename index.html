@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Voice Agent Challenge - Day 3</title>
+  <title>Voice Agent Challenge</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -55,6 +55,32 @@
           <audio id="audio-player" controls class="audio-player">
             Your browser does not support the audio element.
           </audio>
+        </div>
+      </div>
+
+      <!-- Echo Bot Section -->
+      <div class="echo-bot-section">
+        <h1 class="echo-bot-title">Echo Bot</h1>
+        <div class="echo-bot-container">
+          <div class="echo-bot-controls">
+            <button id="start-recording-btn" class="echo-btn start-btn">
+              <span class="btn-icon">🎤</span>
+              <span class="btn-text">Start Recording</span>
+            </button>
+            <button id="stop-recording-btn" class="echo-btn stop-btn" disabled>
+              <span class="btn-icon">⏹️</span>
+              <span class="btn-text">Stop Recording</span>
+            </button>
+          </div>
+          <div class="echo-audio-container" id="echo-audio-container" style="display: none;">
+            <div class="audio-header">
+              <span class="audio-icon">🎵</span>
+              <span class="audio-label">Recorded Audio</span>
+            </div>
+            <audio id="echo-audio-player" controls class="audio-player">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
         </div>
       </div>
     </div>

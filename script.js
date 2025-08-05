@@ -213,4 +213,142 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Server connectivity test failed:', error);
         showNotification('Warning: Backend server may not be running on localhost:5000', 'warning');
     });
+
+    // Echo Bot functionality
+    const startRecordingBtn = document.getElementById('start-recording-btn');
+    const stopRecordingBtn = document.getElementById('stop-recording-btn');
+    const echoAudioContainer = document.getElementById('echo-audio-container');
+    const echoAudioPlayer = document.getElementById('echo-audio-player');
+    
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let audioStream = null;
+
+    // Check if MediaRecorder is supported
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        showNotification('MediaRecorder API is not supported in this browser', 'error');
+        startRecordingBtn.disabled = true;
+        stopRecordingBtn.disabled = true;
+    }
+
+    // Start recording function
+    startRecordingBtn.addEventListener('click', async function() {
+        try {
+            // Request microphone access
+            audioStream = await navigator.mediaDevices.getUserMedia({ 
+                audio: {
+                    echoCancellation: true,
+                    noiseSuppression: true,
+                    autoGainControl: true
+                } 
+            });
+
+            // Initialize MediaRecorder
+            mediaRecorder = new MediaRecorder(audioStream);
+            audioChunks = [];
+
+            // Set up event listeners
+            mediaRecorder.ondataavailable = function(event) {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = function() {
+                // Create audio blob and URL
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                
+                // Set audio source and play
+                echoAudioPlayer.src = audioUrl;
+                echoAudioPlayer.load();
+                
+                // Show audio container with animation
+                echoAudioContainer.style.display = 'block';
+                setTimeout(() => {
+                    echoAudioContainer.classList.add('show');
+                }, 10);
+                
+                // Auto-play the recorded audio
+                echoAudioPlayer.play().catch(error => {
+                    console.log('Auto-play prevented by browser:', error);
+                    showNotification('Click play to hear your recording', 'info');
+                });
+
+                showNotification('Recording completed! Playing back your voice...', 'success');
+            };
+
+            // Start recording
+            mediaRecorder.start();
+            
+            // Update UI
+            startRecordingBtn.classList.add('recording');
+            startRecordingBtn.disabled = true;
+            stopRecordingBtn.disabled = false;
+            
+            showNotification('Recording started... Speak now!', 'info');
+
+        } catch (error) {
+            console.error('Error starting recording:', error);
+            
+            if (error.name === 'NotAllowedError') {
+                showNotification('Microphone access denied. Please allow microphone access and try again.', 'error');
+            } else if (error.name === 'NotFoundError') {
+                showNotification('No microphone found. Please connect a microphone and try again.', 'error');
+            } else {
+                showNotification('Failed to start recording: ' + error.message, 'error');
+            }
+        }
+    });
+
+    // Stop recording function
+    stopRecordingBtn.addEventListener('click', function() {
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            mediaRecorder.stop();
+            
+            // Stop all tracks in the stream
+            if (audioStream) {
+                audioStream.getTracks().forEach(track => track.stop());
+            }
+            
+            // Update UI
+            startRecordingBtn.classList.remove('recording');
+            startRecordingBtn.disabled = false;
+            stopRecordingBtn.disabled = true;
+            
+            showNotification('Stopping recording...', 'info');
+        }
+    });
+
+    // Clean up audio URL when audio is loaded
+    echoAudioPlayer.addEventListener('loadeddata', function() {
+        // Clean up previous blob URL to prevent memory leaks
+        const currentSrc = echoAudioPlayer.src;
+        if (currentSrc.startsWith('blob:')) {
+            setTimeout(() => {
+                URL.revokeObjectURL(currentSrc);
+            }, 1000);
+        }
+    });
+
+    // Handle audio play errors
+    echoAudioPlayer.addEventListener('error', function() {
+        showNotification('Error playing recorded audio', 'error');
+    });
+
+    // Add keyboard shortcuts for recording
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+Shift+R to start recording
+        if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+            e.preventDefault();
+            if (!startRecordingBtn.disabled) {
+                startRecordingBtn.click();
+            }
+        }
+        // Ctrl+Shift+S to stop recording
+        if (e.ctrlKey && e.shiftKey && e.key === 'S') {
+            e.preventDefault();
+            if (!stopRecordingBtn.disabled) {
+                stopRecordingBtn.click();
+            }
+        }
+    });
 });
